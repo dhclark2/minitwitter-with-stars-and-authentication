@@ -1,0 +1,55 @@
+.page-header
+  %i.fa.fa-twitter{"aria-hidden" => "true", style: 'margin-left: 50%; font-size: 90px; color: #0000ff'}
+
+  %h1 Listing tweets
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th #
+        %th
+          Favorite
+          %i.fa.fa-star-o{"aria-hidden" => "true"}
+          OR
+          %i.fa.fa-star{"aria-hidden" => "true", style: 'color:#f0C300'}
+        %th Tweet
+        %th User name
+        %th Posted
+        %th{:colspan => 3} Options
+
+    %tbody
+      - @tweets.each_with_index do |tweet, index|
+        %tr
+          %td
+            = index + 1
+            \.
+          %td
+            %p
+              = tweet.star_count
+              = link_to star_tweet_path(tweet) do
+                - if tweet.stars.count == 0
+                  %i.fa.fa-star-o{"aria-hidden" => "true"}
+                - else
+                  %i.fa.fa-star{"aria-hidden" => "true"}
+          %td
+            %p
+              = link_to tweet.tweet, tweet.link
+
+              %em
+                (
+                = truncate(tweet.link, length: 8)
+                )
+
+          %td= link_to tweet.user_name
+          %td= tweet.created_at
+
+          %td
+            = link_to tweet do
+              %span.glyphicon.glyphicon-ok
+          %td
+            = link_to edit_tweet_path(tweet) do
+              %span.glyphicon.glyphicon-pencil
+          %td
+            = link_to tweet, data: { confirm: 'Are you sure?' }, method: :delete do
+              %span.glyphicon.glyphicon-remove

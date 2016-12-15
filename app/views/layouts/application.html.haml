@@ -37,11 +37,11 @@
             %li
               = link_to new_tweet_path do
                 New Tweet
-          %ul.navbar-nav.navbar-right
-            - if user_signed_in?
-              %li
-                %p.navbar-text
-                  = current_user_email
+          -# %ul.navbar-nav.navbar-right
+          -#   - if user_signed_in?
+          -#     %li
+          -#       %p.navbar-text
+          -#         = current_user_email
 
     .container
       - flash.each do |name, msg|

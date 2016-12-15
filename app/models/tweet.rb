@@ -9,11 +9,4 @@ class Tweet < ApplicationRecord
     stars.count
   end
 
-  # def blank_star
-  #   %i.fa.fa-star-o{"aria-hidden" => "true"}
-  # end
-  #
-  # def solid_star
-  #   %i.fa.fa-star{"aria-hidden" => "true", style: 'color:#f0C300'}
-  # end
 end
